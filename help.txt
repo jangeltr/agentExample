@@ -1,0 +1,15 @@
+pyenv local 3.13.0
+
+python3 -m venv ~/env
+
+source ~/env/bin/activate
+
+# Requirements
+pip install -U langgraph langchain langchain-openai 
+pip install langgraph-cli
+pip install -U "langgraph-cli[inmem]"
+
+# Create langgraph.json
+
+# Ejecutar por primera vez
+langgraph dev
