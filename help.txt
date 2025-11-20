@@ -1,15 +1,24 @@
 pyenv local 3.13.0
 
-python3 -m venv ~/env
-
-source ~/env/bin/activate
+# inicializa el proyecto con uv y crea el entorno virtual
+uv init
 
 # Requirements
-pip install -U langgraph langchain langchain-openai 
-pip install langgraph-cli
-pip install -U "langgraph-cli[inmem]"
+uv add langgraph langchain langchain-openai 
+uv add langgraph-cli
+uv add "langgraph-cli[inmem]" --dev
+uv add ipykernel jupyter
 
 # Create langgraph.json
 
-# Ejecutar por primera vez
-langgraph dev
+# Para ejecutar notebook.ipynb
+Seleccionar el kernel .venc (Python 3.13.0)
+
+# Compilar el proyecto 
+uv pip install -e .
+
+# Ejecutar. (Con uv no necesito activar el entorno)
+uv run langgraph dev
+# Ejecutar. (Usando jupyter)
+uv add ipykernel jupyter
+uv run jupyter notebook
